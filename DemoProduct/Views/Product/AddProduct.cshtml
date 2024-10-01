@@ -1,0 +1,38 @@
+﻿@model EntityLayer.Concrete.Product
+
+@{
+    ViewData["Title"] = "AddProduct";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header bg-gradient-primary text-white text-center py-4">
+            <h3 class="card-title mb-0" style="color:black">Yeni Ürün Ekle</h3>
+        </div>
+        <div class="card-body p-5">
+            <form method="post">
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Ürün adını girin" })
+                    @Html.LabelFor(x => x.Name, "Ürün Adı", new { @class = "form-label" })
+                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(x => x.Price, new { @class = "form-control", placeholder = "Ürün fiyatını girin" })
+                    @Html.LabelFor(x => x.Price, "Ürün Fiyatı", new { @class = "form-label" })
+                    @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-floating mb-4">
+                    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control", placeholder = "Stok sayısını girin" })
+                    @Html.LabelFor(x => x.Stock, "Stok Sayısı", new { @class = "form-label" })
+                    @Html.ValidationMessageFor(x => x.Stock, "", new { @class = "text-danger" })
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-md btn-success shadow px-4 py-2">
+                        <i class="fas fa-plus-circle"></i> Yeni Ürün Ekle
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

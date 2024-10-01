@@ -1,0 +1,56 @@
+﻿@using EntityLayer.Concrete
+@model List<Job>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-primary"></h3>
+        <a href="/Job/AddJob" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Yeni iş Ekle
+        </a>
+    </div>
+
+    <div class="card-body p-4">
+        <table class="table table-hover table-striped align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>İş Adı</th>
+                    
+                    <th>İş Sil</th>
+                    <th>İş Güncelle</th>
+                    <th>İş Detaylar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.JobID</td>
+                        <td>@item.Name</td>
+                       
+                        <td>
+                            <a href="/Job/DeleteJob/@item.JobID" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash-alt"></i> Sil
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Job/UpdateJob/@item.JobID" class="btn btn-sm btn-outline-success">
+                                <i class="fas fa-edit"></i> Güncelle
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/Job/DetailsJob/@item.JobID" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-edit"></i> Detaylar
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

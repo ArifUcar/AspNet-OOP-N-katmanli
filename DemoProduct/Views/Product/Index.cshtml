@@ -1,0 +1,52 @@
+﻿@using EntityLayer.Concrete
+@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-primary"></h3>
+        <a href="/Product/AddProduct" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Yeni Ürün Ekle
+        </a>
+    </div>
+
+        <div class="card-body p-4">
+            <table class="table table-hover table-striped align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Fiyatı</th>
+                        <th>Ürün Stok Sayısı</th>
+                        <th>Ürün Sil</th>
+                        <th>Ürün Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.Stock</td>
+                            <td>
+                                <a href="/Product/DeleteProduct/@item.Id" class="btn btn-sm btn-outline-danger">
+                                    <i class="fas fa-trash-alt"></i> Sil
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/Product/UpdateProduct/@item.Id" class="btn btn-sm btn-outline-success">
+                                    <i class="fas fa-edit"></i> Güncelle
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

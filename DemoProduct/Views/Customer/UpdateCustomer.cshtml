@@ -1,0 +1,44 @@
+﻿@model EntityLayer.Concrete.Customer
+@{
+    ViewData["Title"] = "UpdateCustomer";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-3">
+        <div class="card-header bg-gradient-primary text-white text-center py-4">
+            <h3 class="card-title mb-0" style="color:black">Müşteri Güncelle</h3>
+        </div>
+        <div class="card-body p-5">
+            <form method="post">
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", placeholder = "Müşteri ID", @readonly = "readonly" })
+                    @Html.LabelFor(x => x.Id, "Müşteri ID", new { @class = "form-label" })
+                    @Html.ValidationMessageFor(x => x.Id, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control", placeholder = "Müşteri İsmi Soyismi" })
+                    @Html.LabelFor(x => x.Name, "Müşteri İsmi Soyismi", new { @class = "form-label" })
+                    @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-floating mb-3">
+                    @Html.TextBoxFor(x => x.City, new { @class = "form-control", placeholder = "Müşteri Şehri" })
+                    @Html.LabelFor(x => x.City, "Müşteri Şehri", new { @class = "form-label" })
+                    @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group mb-4">
+                    @Html.Label("Meslek Seçiniz")
+                    @Html.DropDownListFor(x => x.JobID, (List<SelectListItem>)ViewBag.v, new { @class = "form-select" })
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-md btn-success shadow px-4 py-2">
+                        <i class="fas fa-plus-circle"></i> Güncelle
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+W
+

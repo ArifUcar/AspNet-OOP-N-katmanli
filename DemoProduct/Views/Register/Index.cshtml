@@ -1,0 +1,214 @@
+﻿@model DemoProduct.Models.UserRegisterViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Kayıt Ol Sayfası" />
+    <meta name="author" content="DemoProduct" />
+    <title>Kayıt Ol - SB Admin</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/startbootstrap-sb-admin-gh-pages/css/styles.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Inline CSS for improvements -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+            .form-control:focus {
+                box-shadow: 0 0 10px rgba(33, 150, 243, 0.2);
+                border-color: #2196f3;
+            }
+
+        .btn-primary {
+            background-color: #2196f3;
+            border-color: #2196f3;
+            transition: background-color 0.3s;
+        }
+
+            .btn-primary:hover {
+                background-color: #1976d2;
+            }
+
+        .card-header, .card-footer {
+            background-color: #f8f9fa;
+        }
+
+        .small a {
+            color: #2196f3;
+        }
+
+            .small a:hover {
+                color: #1976d2;
+            }
+        /* Hata mesajlarını kırmızı yapalım */
+        span {
+            color: red;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            cursor: pointer;
+        }
+
+        .password-container {
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header">
+                                    <h3 class="text-center font-weight-light my-4">Hesap Oluştur</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post">
+                                        <div class="row mb-1">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="Name" id="inputFirstName" type="text" placeholder="Ad" />
+                                                    <label for="inputFirstName">Ad</label>
+                                                    <span asp-validation-for="Name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input class="form-control" id="inputLastName" name="Surname" type="text" placeholder="Soyad" />
+                                                    <label for="inputLastName">Soyad</label>
+                                                    <span asp-validation-for="Surname"></span>
+                                                </div>
+                                              
+                                            </div>
+                                          
+                                           
+
+
+                                        </div>
+                                        <br />
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <select class="form-control" id="inputGender" name="Gender">
+                                                    <option value="Belirtmek İstemiyorum">Belirtmek İstemiyorum</option>
+                                                    <option value="Kadın">Kadın</option>
+                                                    <option value="Erkek">Erkek</option>
+                                                   
+                                                </select>
+                                                <label for="inputGender">Cinsiyet</label>
+                                                <span asp-validation-for="Gender"></span>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        
+
+
+
+
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputEmail" name="Mail" type="email" placeholder="Email adresi" />
+                                            <label for="inputEmail">Email adresi</label>
+                                            <span asp-validation-for="Mail"></span>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="inputUserName" name="userName" type="text" placeholder="Kullanıcı Adı" />
+                                            <label for="inputUserName">Kullanıcı Adı</label>
+                                            <span asp-validation-for="userName"></span>
+                                        </div>
+                                       
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0 password-container">
+                                                    <input class="form-control" id="inputPassword" name="Password" type="password" placeholder="Şifre" />
+                                                    <label for="inputPassword">Şifre</label>
+                                                    <i class="fas fa-eye password-toggle" id="togglePassword" onclick="togglePasswordVisibility('inputPassword', 'togglePassword')"></i>
+                                                    <span asp-validation-for="Password"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0 password-container">
+                                                    <input class="form-control" id="inputPasswordConfirm" name="ConfirmPassword" type="password" placeholder="Şifreyi Onaylayın" />
+                                                    <label for="inputPasswordConfirm">Şifreyi Onaylayın</label>
+                                                    <i class="fas fa-eye password-toggle" id="togglePasswordConfirm" onclick="togglePasswordVisibility('inputPasswordConfirm', 'togglePasswordConfirm')"></i>
+                                                    <span asp-validation-for="ConfirmPassword"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                                        <button class="btn btn-primary btn-block">Hesap Oluştur</button>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small"><a href="/login/Index">Hesabınız var mı? Giriş yapın</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <div id="layoutAuthentication_footer">
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Telif Hakkı &copy; Web Siteniz @DateTime.Now.Year</div>
+                        <div>
+                            <a href="#">Gizlilik Politikası</a>
+                            &middot;
+                            <a href="#">Şartlar &amp; Koşullar</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/startbootstrap-sb-admin-gh-pages/js/scripts.js"></script>
+
+    <script>
+        function togglePasswordVisibility(inputId, iconId) {
+            var passwordField = document.getElementById(inputId);
+            var toggleIcon = document.getElementById(iconId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = "password";
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
